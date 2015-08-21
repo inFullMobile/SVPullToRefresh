@@ -299,7 +299,7 @@ static char UIScrollViewPullToRefreshView;
         	totalMaxWidth = leftViewWidth + maxLabelWidth;
         }
         
-        CGFloat labelX = (self.bounds.size.width / 2) - (totalMaxWidth / 2) + leftViewWidth + margin;
+        CGFloat labelX = (self.bounds.size.width / 2) - (maxLabelWidth / 2);
         
         if(subtitleSize.height > 0){
             CGFloat totalHeight = titleSize.height + subtitleSize.height + marginY;
@@ -317,7 +317,7 @@ static char UIScrollViewPullToRefreshView;
             self.subtitleLabel.frame = CGRectIntegral(CGRectMake(labelX, titleY + titleSize.height + marginY, subtitleSize.width, subtitleSize.height));
         }
         
-        CGFloat arrowX = (self.bounds.size.width / 2) - (totalMaxWidth / 2) + (leftViewWidth - self.arrow.bounds.size.width) / 2;
+        CGFloat arrowX = (self.superview.bounds.size.width-200)*0.5;
         self.arrow.frame = CGRectMake(arrowX,
                                       (self.bounds.size.height / 2) - (self.arrow.bounds.size.height / 2),
                                       self.arrow.bounds.size.width,
@@ -462,6 +462,7 @@ static char UIScrollViewPullToRefreshView;
     if(!_titleLabel) {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 210, 20)];
         _titleLabel.text = NSLocalizedString(@"Pull to refresh...",);
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.font = [UIFont boldSystemFontOfSize:14];
         _titleLabel.backgroundColor = [UIColor clearColor];
         _titleLabel.textColor = textColor;
